@@ -5,6 +5,8 @@ from hermes_python.hermes import Hermes
 from hermes_python.ontology.dialogue.intent import IntentMessage
 
 
+CONFIG_INI = "config.ini"
+
 # If this skill is supposed to run on the satellite,
 # please get this mqtt connection info from <config.ini>
 # Hint: MQTT server is always running on the master device
@@ -21,12 +23,13 @@ class Test(object):
     def __init__(self):
         # get the configuration if needed
         try:
-            self.config = SnipsConfigParser.read_configuration_file("config.ini")
+            self.config = SnipsConfigParser.read_configuration_file(CONFIG_INI)
         except Exception:
             self.config = None
 
         # start listening to MQTT
         self.start_blocking()
+
 
     @staticmethod
     def intent_1_callback(hermes, intent_message):
@@ -43,7 +46,7 @@ class Test(object):
     def start_blocking(self):
         with Hermes(MQTT_ADDR) as h:
             h.subscribe_intent('intent_1', self.intent_1_callback) \
-                .loop_forever()
+            .loop_forever()
 
 
 if __name__ == "__main__":
