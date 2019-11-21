@@ -42,7 +42,7 @@ class Test(object):
     # --> Register callback function and start MQTT
     def start_blocking(self):
         with Hermes(MQTT_ADDR) as h:
-            h.subscribe_intent("test", self.intent_1_callback) \
+            h.subscribe_intents(self.intent_1_callback) \
             .loop_forever()
 
 
