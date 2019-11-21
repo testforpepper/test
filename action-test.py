@@ -37,10 +37,7 @@ class Test(object):
         hermes.publish_end_session(intent_message.session_id, "")
 
         # action code goes here...
-        intentname = intent_message.intent.intent_name
-        if intentname == "atesfa:test":
-            # if need to speak the execution result by tts
-            hermes.publish_start_session_notification(intent_message.site_id, "test")
+        print("[Received] intent: {}".format(intent_message.intent.intent_name))
 
     # --> Register callback function and start MQTT
     def start_blocking(self):
