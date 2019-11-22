@@ -37,7 +37,7 @@ class Test(object):
         hermes.publish_end_session(intent_message.session_id, "")
 
         # action code goes here...
-        hermes.publish_end_session(intent_message.session_id, "Test.")
+        hermes.publish_start_session(intent_message.session_id, "Test.")
         print("[Received] intent: {}".format(intent_message.intent.intent_name))
 
     # --> Register callback function and start MQTT
