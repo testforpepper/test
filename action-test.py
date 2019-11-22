@@ -34,11 +34,11 @@ class Test(object):
     @staticmethod
     def intent_1_callback(hermes: Hermes, intent_message: IntentMessage):
         # terminate the session first if not continue
-        hermes.publish_end_session(intent_message.session_id, "")
 
         # action code goes here...
-        hermes.publish_start_session(intent_message.session_id, "Test.")
-        print("[Received] intent: {}".format(intent_message.intent.intent_name))
+        intentname = intent_message.intent.intent_name
+        if intentname == "atesfa:test":
+            hermes.publish_end_session(intent_message.session_id, "Test.")
 
     # --> Register callback function and start MQTT
     def start_blocking(self):
