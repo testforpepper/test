@@ -15,7 +15,7 @@ MQTT_PORT = 1883
 MQTT_ADDR = "{}:{}".format(MQTT_IP_ADDR, str(MQTT_PORT))
 
 
-class infoFAPS(object):
+class Test(object):
     """Class used to wrap action code with mqtt connection
        Please change the name referring to your application
     """
@@ -37,8 +37,8 @@ class infoFAPS(object):
 
         # action code goes here...
         intentname = intent_message.intent.intent_name
-        if intentname == "atesfa:info":
-            hermes.publish_end_session(intent_message.session_id, "Faps steht für den Lehrstuhl für Fertigungsautomatisierung und Produktionssystematik. Der Lehrstuhl wird von Herrn Professor Franke geleitet und hat Standorte in Erlangen und Nürnberg. Hier am Lehrstuhl gibt es sechs verschiedene Forschungsbereiche. Die Elektronikproduktion, den Elektromaschinenbau, die Bordnetze, Effiziente Systeme, die Hausautomatisierung und natürlich meinen Lieblingsbereich die Biomechatronik. Das ist nämlich der Bereich in dem auch ich erforscht werde.Faps steht für den Lehrstuhl für Fertigungsautomatisierung und Produktionssystematik. Der Lehrstuhl wird von Herrn Professor Franke geleitet und hat Standorte in Erlangen und Nürnberg. Hier am Lehrstuhl gibt es sechs verschiedene Forschungsbereiche. Die Elektronikproduktion, den Elektromaschinenbau, die Bordnetze, Effiziente Systeme, die Hausautomatisierung und natürlich meinen Lieblingsbereich die Biomechatronik. Das ist nämlich der Bereich in dem auch ich erforscht werde.")
+        if intentname == "atesfa:test":
+            hermes.publish_end_session(intent_message.session_id, "Test.")
 
     # --> Register callback function and start MQTT
     def start_blocking(self):
@@ -48,4 +48,4 @@ class infoFAPS(object):
 
 
 if __name__ == "__main__":
-    infoFAPS()
+    Test()
